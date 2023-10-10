@@ -32,8 +32,8 @@
 
 # What is in this respository?
 * ```CS-RS```, including:
-  * ```train.py```: implements the detailed training pipeline
-  * ```macer.py, pair_macer.py```:  main functions for training a provably cost-sensitive robust classifier for seedwise and pairwise cost matrices
+  * ```train.py```: implements detailed training pipeline
+  * ```macer.py, pair_macer.py```:  main functions for training provably robust cost-sensitive classifiers for seedwise and pairwise cost matrices
   * ```certify```: implements detailed certification pipeline 
   * ```core.py```: implements detailed practical certification algorithm for cost-sensitive robustness
   * ```smooth_train.py```: implements the reweighting adaptation for standard randomized smoothing training methods
