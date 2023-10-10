@@ -75,9 +75,8 @@ if __name__ == '__main__':
                       help = 'version of macer,v0: only correct cat; v1:')
   parser.add_argument('--arch', default='cifar_resnet56', type=str,
                       help = 'end index for certification')
-  parser.add_argument('--type', default='single', type=str,
+  parser.add_argument('--target_type', default='single', type=str,
                       help = 'target type in pair-wise case: single or multiple')
-  parser.add_argument('--target_values', nargs='+', help='List of values')
   parser.add_argument('--cs', default=True, type=bool,
                       help = 'short for contain sensitive,whether to contain sensitive class in normal radius optimization \
                       for keep sensitive class overall accuracy in pair-wise definition')
@@ -185,7 +184,7 @@ if __name__ == '__main__':
     model.train()  
 
     train(args.sigma, args.lbd1,args.lbd2, args.gauss_num, args.beta,
-                    args.type, num_classes, model, trainloader, optimizer, device,epoch,args.gamma1,args.gamma2,args.seed_type)
+                    args.target_type, num_classes, model, trainloader, optimizer, device,epoch,args.gamma1,args.gamma2,args.seed_type)
     # epoch -> args.cs
     
     scheduler.step()
