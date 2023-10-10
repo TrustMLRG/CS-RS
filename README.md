@@ -37,6 +37,5 @@
   * ```certify```: implements detailed certification pipeline 
   * ```core.py```: detailed practical certification algorithm for cost-sensitive robustness
   * ```smooth_train.py```: implements the reweighting adaptation for standard randomized smoothing training methods
-
-* ```analyze.py```: functions to draw the cost-sensitive robustness v.s. certified radius curves
+  * ```analyze.py```: functions to draw the cost-sensitive robustness v.s. certified radius curves
  
