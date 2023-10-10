@@ -22,12 +22,12 @@
 
   - Training for seedwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 
+    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_type 3
     ```
 
   - Training for pairwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_value 3 --target_type single
+    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_type 3 --target_type single
     ```
 
 # What is in this respository?
