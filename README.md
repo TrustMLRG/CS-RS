@@ -7,17 +7,17 @@
 # Practical certification pipeline for cost-sensitive robustness
 
 ## certify overall robustness
-`python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify overall --type macer
+`python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify overall --type macer`
 
 ## certify cost-sensitive robustness
-` python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify sensitive --type macer 
+` python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify sensitive --type macer`
 
 # Training for cost-sensitive robustness
 
 ## Training for seedwise cost matrices
-` python main.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5
+` python main.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
 
 ## Training for pairwise cost matrices
-` python main.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5
+` python main.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
 
 
