@@ -9,12 +9,12 @@
     ```text
     pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
     ```
-   - Install Other Dependencies
+  - Install Other Dependencies
       ```text
      pip install scipy pandas statsmodels matplotlib seaborn
       ```
       
-    - Certification for overall robustness
+  - Certification for overall robustness
     ```text
     python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify overall --type macer
     ```
