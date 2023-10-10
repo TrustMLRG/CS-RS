@@ -30,7 +30,7 @@
     python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_type 3 --target_type single
     ```
 
-# What is in this respository?
+# What is in this repository?
 * ```CS-RS```, including:
   * ```train.py```: implements detailed training pipeline
   * ```macer.py, pair_macer.py```:  main functions for training provably robust cost-sensitive classifiers for seedwise and pairwise cost matrices
