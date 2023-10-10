@@ -10,9 +10,9 @@
 
 
 # Training for seedwise cost matrices
-` python main.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
+` python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
 
 # Training for pairwise cost matrices
-` python main.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
+` python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5`
 
 
