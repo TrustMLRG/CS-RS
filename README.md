@@ -13,6 +13,11 @@
       ```text
      pip install scipy pandas statsmodels matplotlib seaborn
       ```
+      
+    - Certification for overall robustness
+    ```text
+    python certify.py --dataset cifar10 --base_classifier checkpoint_dir --sigma 0.5 --outfile outfile --certify overall --type macer
+    ```
     
   - Certification for cost-sensitive robustness
     ```text
@@ -22,12 +27,12 @@
 
   - Training for seedwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_type 3
+    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd1 3 --outfile outfile  --sigma 0.5 --seed_type 3
     ```
 
   - Training for pairwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd 3 --outfile outfile --arch cifar_resnet56 --sigma 0.5 --seed_type 3 --target_type single
+    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd1 3 --outfile outfile  --sigma 0.5 --seed_type 3 --target_type single
     ```
 
 # What is in this repository?
