@@ -88,36 +88,13 @@ def plot_certified_accuracy(outfile: str, title: str, max_radius: float,
 if __name__ == "__main__":
 
     plot_certified_accuracy(
-        "single_seed", "", 2.0, [
-            Line(ApproximateAccuracy(dir+"cohen_cer",'single_seed'), "Cohen"),
-            Line(ApproximateAccuracy(dir+"cohen_cifar_beta0.2_cer",'single_seed'), "Reweight"),
-            Line(ApproximateAccuracy(dir+"macer_ori",'single_seed'), "MACER"),
-            Line(ApproximateAccuracy(dir+"ours_single_cat",'single_seed'), "Ours"),
-        ])
-    plot_certified_accuracy(
-        "multi_seed", " ", 2.0, [
-            Line(ApproximateAccuracy(dir+"cohen_cer",'multi_seed'), "Cohen"),
-            Line(ApproximateAccuracy(dir+"cohen_exten_multi0.2_cer",'multi_seed'), "Cohen"),
-            Line(ApproximateAccuracy(dir+"macer_ori",'multi_seed'), "MACER"),
-            Line(ApproximateAccuracy(dir+"macer56_multi_cer",'multi_seed'), "Ours"),
-        ])
-     
-    plot_certified_accuracy(
-        "single_target", "CIFAR-10, Single target", 2.0, [
-            Line(ApproximateAccuracy(dir+"cohenB_single_sen",'single_pair'), "Cohen"),
-            Line(ApproximateAccuracy(dir+"cohen_cifar_beta0.2_cer",'single_pair'), "Reweight"),
-            Line(ApproximateAccuracy(dir+"macerB_single_sen",'single_pair'), "MACER"),
-            Line(ApproximateAccuracy(dir+"cs_single_sen",'single_pair'), "Ours"),
-        ])
-    
-    plot_certified_accuracy(
-        "multi_target", "CIFAR-10, Single target", 2.0, [
-            Line(ApproximateAccuracy(dir+"cohenB_multi_sen",'multi_pair'), "Cohen"),
-            Line(ApproximateAccuracy(dir+"cohen_cifar_beta0.2_cer",'single_pair'), "Reweight"),
-            Line(ApproximateAccuracy(dir+"macerB_multi_sen",'multi_pair'), "MACER"),
-            Line(ApproximateAccuracy(dir+"cs_multi_sen",'multi_pair'), "Ours"),
-        ])
-    
- 
+     dir+"single_seed", "", 2.0, [ 
+         Line(ApproximateAccuracy(dir+"motivation/ours_seed3_cer",'single_seed'), "Ours"),
+         Line(ApproximateAccuracy(dir+"motivation/salman_seed3_lbd0.1_cer",'single_seed'), "SmoothAdv-R"),
+         Line(ApproximateAccuracy(dir+"ddl_cer/cohen_cifar_beta0.1_cer",'single_seed'), "Gaussian-R"),
+         Line(ApproximateAccuracy(dir+"motivation/ori_macer_cer",'single_seed'), "MACER"),
+         Line(ApproximateAccuracy(dir+"motivation/SmoothMixR_cer",'single_seed'), "SmoothMix-R"),    
+     ])
+
     
 
