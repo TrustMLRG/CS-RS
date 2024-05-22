@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 
 from architectures import ARCHITECTURES
 from datasets import DATASETS, FFCVImageNet
-from third_party.smoothadv import Attacker, PGD_L2, DDN
+from smoothadv import Attacker, PGD_L2, DDN
 from train_utils import AverageMeter, accuracy, log, test, requires_grad_
 from train_utils import prologue
 from tqdm import tqdm
