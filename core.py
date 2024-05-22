@@ -1,3 +1,5 @@
+# adapted from https://github.com/locuslab/smoothing
+
 import torch
 from scipy.stats import norm, binom_test
 import numpy as np
@@ -49,11 +51,7 @@ class Smooth(object):
         cBHat = sensitive_target[0]
         tmp_n = counts_estimation[cBHat]
         card = len(sensitive_target)
-        # for j in sensitive_target:
-        #     n_j = counts_estimation[j]
-        #     if tmp_n<n_j:
-        #         cBHat = j
-        #         tmp_n = n_j
+
         result = [counts_estimation[i] for i in sensitive_target]
         alpha_card_half = alpha / (2 * card)
         pB = self._upper_confidence_bound(result[0],n,alpha_card_half)
@@ -75,7 +73,7 @@ class Smooth(object):
         pB = self._upper_confidence_bound(nB,n,alpha/2*card)
 
         r1 = self.sigma * norm.ppf(pABar) # standard radius
-        r2 = self.sigma * (norm.ppf(pA)-norm.ppf(pB))*0.5 # our calibrated radius
+        r2 = self.sigma * (norm.ppf(pA)-norm.ppf(pB))*0.5 # our c-s radius
         r = max(r1,r2)
         if pABar < 0.5: 
             return Smooth.ABSTAIN, r, r1, r2, mass,nA,nB,cBHat 
