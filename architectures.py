@@ -17,7 +17,11 @@ def get_architecture(arch: str, dataset: str) -> torch.nn.Module:
     :param dataset: the dataset - should be in the datasets.DATASETS list
     :return: a Pytorch module
     """
-    if dataset == 'ham':
+    if dataset == "imagenet": 
+        model = resnet50(pretrained=False)
+        model = torch.nn.DataParallel(model).cuda()
+        cudnn.benchmark = True
+    elif dataset == 'ham':
         model = resnet_ham().cuda()
         return model
     elif dataset == 'imagenette':
@@ -32,6 +36,6 @@ def get_architecture(arch: str, dataset: str) -> torch.nn.Module:
             model = resnet_cifar(depth=56, num_classes = 10).cuda()
     normalize_layer = get_normalize_layer(dataset)
     return torch.nn.Sequential(normalize_layer, model)
-    # return model
+   
 
 
