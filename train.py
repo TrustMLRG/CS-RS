@@ -17,7 +17,7 @@ from torchvision.datasets import MNIST, CIFAR10, SVHN
 from tqdm import tqdm
 from train_utils import AverageMeter, accuracy, init_logfile, log
 
-from model import resnet110, LeNet
+from model import resnet110
 from architectures import ARCHITECTURES, get_architecture
 from datasets import get_dataset, DATASETS
 from certify import certify
@@ -70,9 +70,9 @@ if __name__ == '__main__':
   parser.add_argument('--num_classes', default=10, type=int,
                       help = 'Number of classes.')
   parser.add_argument('--version', default='v0', type=str,
-                      help = 'version of macer,v0: only correct cat; v1:')
+                      help = 'version of macer')
   parser.add_argument('--outfile', default='v1', type=str,
-                      help = 'version of macer,v0: only correct cat; v1:')
+                      help = 'output file')
   parser.add_argument('--arch', default='cifar_resnet56', type=str,
                       help = 'end index for certification')
   parser.add_argument('--target_type', default='single', type=str,
@@ -101,66 +101,20 @@ if __name__ == '__main__':
     os.makedirs(ckptdir)
   checkpoint = None if args.resume_ckpt == 'none' else args.resume_ckpt
   
-  # Load dataset and build model
-  if args.dataset == 'mnist':
-     
-    transform_train = transforms.Compose([
-        transforms.ToTensor(),
-    ])
-    transform_test = transforms.Compose([
-        transforms.ToTensor(),
-    ])
-    base_model = LeNet()
-    trainset = MNIST(
-        root = args.root, train=True, download=True, transform=transform_train)
-    testset = MNIST(
-        root = args.root, train=False, download=True, transform=transform_test)
+  pin_memory = (args.dataset == "imagenet")
+  num_classes = 10
+  train_dataset = get_dataset(args.dataset, 'train')
+  test_dataset = get_dataset(args.dataset, 'test')
 
-  elif args.dataset == 'cifar10':
-
-    
-    base_model = get_architecture(args.arch,'cifar10')
-    transform_train = transforms.Compose([
-        transforms.RandomCrop(32, padding=4),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-    ])
-    transform_test = transforms.Compose([
-        transforms.ToTensor(),
-    ])
-
-    trainset = CIFAR10(
-        root = args.root, train=True, download=True, transform=transform_train)
-    testset = CIFAR10(
-        root = args.root, train=False, download=True, transform=transform_test)
-
-  elif args.dataset == 'ham':
-    base_model = get_architecture('cifar_resnet56','ham')
-    
-    normalize = transforms.Normalize(
-        mean=[0.485, 0.456, 0.406],
-        std=[0.229, 0.224, 0.225]
-    )
-    transform = transforms.Compose(
-            [
-                transforms.Resize(299), #299
-                transforms.CenterCrop(299), #299
-                transforms.ToTensor(),
-                normalize
-            ]
-    )
-    trainset,testset = load_ham_data(transform)
-   
-  pin_memory = (args.dataset=='imagenette')
-  trainloader = torch.utils.data.DataLoader(
-      trainset, batch_size=args.batch_size, shuffle = True, pin_memory=pin_memory,num_workers=1)
+  trainloader = DataLoader(train_dataset, batch_size=args.batch,
+                              num_workers=1, pin_memory=pin_memory,shuffle = True)
+  testloader = DataLoader(test_dataset, shuffle=False, batch_size=args.batch,
+                              num_workers=1, pin_memory=pin_memory)
+  
 
   num_classes = args.num_classes
 
   device = 'cuda' if torch.cuda.is_available() else 'cpu'
-  if device == 'cuda':
-    cudnn.benchmark = True
-    model = torch.nn.DataParallel(base_model)
 
   optimizer = optim.SGD(
       model.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
