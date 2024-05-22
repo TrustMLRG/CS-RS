@@ -11,7 +11,7 @@ from process_HAM10k import load_ham_data
 # https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh
 
 # list of all datasets
-DATASETS = ["imagenette", "cifar10","mnist","ham"]
+DATASETS = ["imagenette", "cifar10","imagenet","ham"]
 
 def get_dataset(dataset: str, split: str) -> Dataset:
     """Return the dataset as a PyTorch Dataset object"""
@@ -19,21 +19,21 @@ def get_dataset(dataset: str, split: str) -> Dataset:
         return _imagenette(split)
     elif dataset == "cifar10":
         return _cifar10(split)
-    elif dataset == "mnist":
-        return _mnist(split)
+    elif dataset == "imagenet":
+        return _imagenet(split)
     elif dataset == 'ham':
         return _ham(split)
 
 def get_num_classes(dataset: str):
     """Return the number of classes in the dataset. """
     if dataset == "imagenette":
-        return 10 # original:1000
+        return 10 
     elif dataset == "cifar10":
         return 10
     elif dataset == 'imagenet':
-        return 10
+        return 1000
     elif dataset =='ham':
-        return 4
+        return 2
 
 def get_normalize_layer(dataset: str) -> torch.nn.Module:
     """Return the dataset's normalization layer"""
@@ -77,7 +77,7 @@ def _mnist(split:str) ->Dataset:
    
 def _imagenet(split: str) -> Dataset:
 
-    dir = '/home/c01yuxi/CISPA-projects/certification_robustness-2022/macer_img/data/imagenet/imagenet-10'
+    dir = './imagenet'
     if split == "train":
         subdir = os.path.join(dir, "train")
         transform = transforms.Compose([
@@ -99,7 +99,7 @@ def _imagenette(split: str) -> Dataset:
 
     extra_size = 32
     image_size = 160
-    dir = '/home/c01yuxi/CISPA-projects/certification_robustness-2022/smoothing-master/imagenette2-160'
+    dir = './imagenette2-160'
     if split == "train":
         subdir = os.path.join(dir, "train")
         transform = transforms.Compose([
