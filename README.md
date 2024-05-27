@@ -27,12 +27,12 @@
 
   - Training for seedwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd1 3 --outfile outfile  --sigma 0.5 --seed_type 3
+    python train.py --dataset cifar10 --version v0 --ckptdir ckpt --lbd1 3  --sigma 0.5 --seed_type 3
     ```
 
   - Training for pairwise cost matrices
     ```text
-    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd1 3 --outfile outfile  --sigma 0.5 --seed_type 3 --target_type single
+    python train.py --dataset cifar10 --version v1 --ckptdir ckpt --lbd1 3  --sigma 0.5 --seed_type 3 --target_type single
     ```
 
 # What is in this repository?
@@ -41,6 +41,6 @@
   * ```macer.py, pair_macer.py```:  main functions for training provably robust cost-sensitive classifiers for seedwise and pairwise cost matrices
   * ```certify```: implements detailed certification pipeline 
   * ```core.py```: implements detailed practical certification algorithm for cost-sensitive robustness
-  * ```smooth_train.py```: implements the reweighting adaptation for standard randomized smoothing training methods
+  * ```train_gaussian_R.py, train_salman_R.py,train_smoothmix_R.py```: implements the reweighting adaptation for three baselines: mstandard gaussian, smoothadv and smoothmix
   * ```analyze.py```: functions to draw the cost-sensitive robustness v.s. certified radius curves
  
