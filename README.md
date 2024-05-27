@@ -3,6 +3,7 @@
   - We study whether randomized smoothing, a scalable certification framework, can be leveraged to certify and train for cost-sensitive robustness.
   - To certify cost-sensitive robustness, we propose a new practical certification pipeline to produce tight robustness guarantees for any given cost matrix.
   - To train smoothed classifiers that are optimized for cost-sensitive robustness, we propose fine-grained certified radius optimization schemes.
+  - The arxiv version is released at https://arxiv.org/abs/2310.08732
 
 # Installation & Usage
   - Install PyTorch
