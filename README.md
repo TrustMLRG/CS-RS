@@ -41,6 +41,6 @@
   * ```macer.py, pair_macer.py```:  main functions for training provably robust cost-sensitive classifiers for seedwise and pairwise cost matrices
   * ```certify```: implements detailed certification pipeline 
   * ```core.py```: implements detailed practical certification algorithm for cost-sensitive robustness
-  * ```train_gaussian_R.py, train_salman_R.py,train_smoothmix_R.py```: implements the reweighting adaptation for three baselines: mstandard gaussian, smoothadv and smoothmix
+  * ```train_gaussian_R.py, train_salman_R.py,train_smoothmix_R.py```: implements the reweighting adaptation for three baselines: standard Gaussian, SmoothAdv and SmoothMix
   * ```analyze.py```: functions to draw the cost-sensitive robustness v.s. certified radius curves
  
